@@ -54,7 +54,7 @@ ROOT_URLCONF = 'nfts4h.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['nfts4h-platform/nfts4h/platform_/templates'],
+        'DIRS': ['nfts4h/platform_/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
