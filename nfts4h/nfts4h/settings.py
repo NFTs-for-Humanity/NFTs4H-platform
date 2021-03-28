@@ -137,3 +137,5 @@ LOGGING = {
         },
     },
 }
+
+ALLOWED_HOSTS = ['staging.nfts4h.org:8800']
