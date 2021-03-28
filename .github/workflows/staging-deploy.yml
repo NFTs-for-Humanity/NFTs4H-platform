@@ -6,8 +6,8 @@ on:
       - testing_deployment
 
 jobs:
-  buildAndTest:
-    name: CI Pipeline
+  prepEnvironment:
+    name: Preparing Environment
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -21,7 +21,7 @@ jobs:
         architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified    
 
   deploy:
-    name: CD Pipeline
+    name: Deployment
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -32,7 +32,7 @@ jobs:
         s3-bucket: ['nfts4h-staging-deployments']
         s3-filename: ['deployment-${{ github.sha }}']
 
-    needs: buildAndTest
+    needs: prepEnvironment
     steps:
       - uses: actions/checkout@v2      
 
