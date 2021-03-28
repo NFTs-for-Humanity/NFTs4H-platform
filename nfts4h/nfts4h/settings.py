@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,11 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'gg-fb72xe5(#0s7dos)bp68jwt&*9&^fk6@m3p9e07sa^7s$9-'
 
+# Read secret key from a file
+with open('/etc/d_s.txt') as f:
+    SECRET_KEY = f.read().strip()
+
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 # Application definition
 
