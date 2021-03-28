@@ -48,18 +48,18 @@ jobs:
       - name: AWS Deploy push
         run: |
           aws deploy push \          
-          --application-name ${{ matrix.appname }} \
-          --description "This is a revision for the ${{ matrix.appname }}-${{ github.sha }}" \
-          --ignore-hidden-files \
-          --s3-location s3://${{ matrix.s3-bucket }}/${{ matrix.s3-filename }}.zip \
-          --source .
+            --application-name ${{ matrix.appname }} \
+            --description "This is a revision for the ${{ matrix.appname }}-${{ github.sha }}" \
+            --ignore-hidden-files \
+            --s3-location s3://${{ matrix.s3-bucket }}/${{ matrix.s3-filename }}.zip \
+            --source .
 
       # Create deployment to CodeDeploy
       - name: AWS Create Deployment
         run: |
           aws deploy create-deployment \
-           --application-name ${{ matrix.appname }} \
-           --deployment-config-name CodeDeployDefault.OneAtATime \
-           --deployment-group-name ${{ matrix.deploy-group }} \
-           --file-exists-behavior OVERWRITE \
-           --s3-location bucket=${{ matrix.s3-bucket }},key=${{ matrix.s3-filename }}.zip,bundleType=zip \
+            --application-name ${{ matrix.appname }} \
+            --deployment-config-name CodeDeployDefault.OneAtATime \
+            --deployment-group-name ${{ matrix.deploy-group }} \
+            --file-exists-behavior OVERWRITE \
+            --s3-location bucket=${{ matrix.s3-bucket }},key=${{ matrix.s3-filename }}.zip,bundleType=zip \
