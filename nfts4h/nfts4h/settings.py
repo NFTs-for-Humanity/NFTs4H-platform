@@ -51,30 +51,21 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'nfts4h.urls'
 
-PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
-
-# List of callables that know how to import templates from various sources.
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
-)
-
-#TEMPLATES = [
-#    {
-#        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-#        'DIRS': ['nfts4h/platform_/templates'],
-#        'APP_DIRS': True,
-#        'OPTIONS': {
-#            'context_processors': [
-#                'django.template.context_processors.debug',
-#                'django.template.context_processors.request',
-#                'django.contrib.auth.context_processors.auth',
-#                'django.contrib.messages.context_processors.messages',
-#            ],
-#        },
-#    },
-#]
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': ['nfts4h-platform/nfts4h/platform_/templates'],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
 
 WSGI_APPLICATION = 'nfts4h.wsgi.application'
 
