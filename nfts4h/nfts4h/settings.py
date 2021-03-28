@@ -23,8 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'gg-fb72xe5(#0s7dos)bp68jwt&*9&^fk6@m3p9e07sa^7s$9-'
 
 # Read secret key from a file
-with open('/etc/d_s.txt') as f:
-    SECRET_KEY = f.read().strip()
+secret_path = '/etc/d_s.txt'
+if os.path.exists(secret_path):
+    with open(secret_path) as f:
+        SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
@@ -52,10 +54,14 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'nfts4h.urls'
 
+PROJECT_PATH = os.path.realpath(os.path.dirname(os.path.dirname(__file__)))
+
+PLATFORM_ROOT = os.path.join(PROJECT_PATH, 'platform_/templates')
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['platform_/templates'],
+        'DIRS': [PLATFORM_ROOT],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -139,4 +145,4 @@ LOGGING = {
     },
 }
 
-ALLOWED_HOSTS = ['staging.nfts4h.org']
+ALLOWED_HOSTS = ['staging.nfts4h.org', '127.0.0.1']
