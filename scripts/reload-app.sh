@@ -2,4 +2,4 @@
 cd ~/nfts4h-platform
 source env/bin/activate
 cd nfts4h/
-python3 manage.py runserver
+screen -d -m python manage.py runserver 0.0.0.0:8800
