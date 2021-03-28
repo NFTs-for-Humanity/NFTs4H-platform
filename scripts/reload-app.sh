@@ -1,3 +1,4 @@
 #!/bin/bash
-cd ..
+cd ../nfts4h
 ls
+python3 manage.py runserver
